@@ -1,0 +1,41 @@
+created_at=2026-10-14T11:55:06.640015+00:00
+model_path=D:/models/bert-base-chinese
+seed=42
+learning_rate=3e-05
+scheduler=linear_warmup_decay
+warmup_steps=425
+total_optimizer_steps_planned=4255
+weight_decay=0.01
+weight_decay_excluded=bias,LayerNorm.weight
+fp16=True
+max_length=256
+content_tokens=254
+window_stride=64
+batch_size=8
+gradient_accumulation_steps=2
+effective_batch_size=16
+epochs_planned=5
+early_stopping_patience=2
+early_stopping_metric=tune_original_gold_strict_entity_micro_f1
+tie_break=earlier_epoch
+token_count_rule=sum_over_windows
+oom_fallback=none
+train_documents=13500 train_windows=13602 train_multi_window_documents=32 train_token_span_mismatch=156 train_no_token=17 train_window_cut=0
+train_gold=74502 train_dropped=13702
+tune_documents=1500 tune_windows=1538 tune_multi_window_documents=9 tune_token_span_mismatch=34 tune_no_token=7 tune_window_cut=0
+tune_gold=8147 tune_dropped=1458
+test_documents=1000 test_windows=1000 test_multi_window_documents=0 test_token_span_mismatch=12 test_no_token=1 test_window_cut=0
+test_gold=4877 test_dropped=839
+epoch=1 train_loss=0.748555 tune_precision=0.679700 tune_recall=0.567571 tune_micro_f1=0.618595 tune_tp=4624 tune_fp=2179 tune_fn=3523 saved=1 eval_batch_size=8 elapsed_sec=430.6
+epoch=2 train_loss=0.366290 tune_precision=0.696241 tune_recall=0.593347 tune_micro_f1=0.640689 tune_tp=4834 tune_fp=2109 tune_fn=3313 saved=1 eval_batch_size=8 elapsed_sec=444.2
+epoch=3 train_loss=0.268887 tune_precision=0.726525 tune_recall=0.596416 tune_micro_f1=0.655072 tune_tp=4859 tune_fp=1829 tune_fn=3288 saved=1 eval_batch_size=8 elapsed_sec=281.2
+epoch=4 train_loss=0.198763 tune_precision=0.724153 tune_recall=0.606113 tune_micro_f1=0.659896 tune_tp=4938 tune_fp=1881 tune_fn=3209 saved=1 eval_batch_size=8 elapsed_sec=180.8
+epoch=5 train_loss=0.150755 tune_precision=0.729991 tune_recall=0.611268 tune_micro_f1=0.665375 tune_tp=4980 tune_fp=1842 tune_fn=3167 saved=1 eval_batch_size=8 elapsed_sec=187.3
+best_epoch=5
+test_eval_count=1
+test_checkpoint_epoch=5
+test_eval_batch_size=8
+test_entity precision=0.688144 recall=0.589092 micro_f1=0.634777 tp=2873 fp=1302 fn=2004
+test_token precision=0.795151 recall=0.759651 micro_f1=0.776996 tp=16726 fp=4309 fn=5292
+predictions=outputs/predictions/bert_bio.json
+metrics=outputs/metrics/bert_bio.csv

@@ -1,0 +1,3 @@
+method,precision,recall,micro_f1,tp,fp,fn
+bert_bio_token,0.795151,0.759651,0.776996,16726,4309,5292
+bert_bio_entity,0.688144,0.589092,0.634777,2873,1302,2004
