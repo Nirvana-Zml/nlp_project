@@ -1,0 +1,2 @@
+method,precision,recall,micro_f1,tp,fp,fn
+qwen_3b_one,0.030572,0.017634,0.022367,86,2727,4791

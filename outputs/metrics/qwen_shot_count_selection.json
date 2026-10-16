@@ -1,0 +1,45 @@
+{
+  "selected_shots": 1,
+  "tune_scores": [
+    {
+      "method": "qwen_shot_0",
+      "precision": "0.025696",
+      "recall": "0.008838",
+      "micro_f1": "0.013152",
+      "tp": "72",
+      "fp": "2730",
+      "fn": "8075"
+    },
+    {
+      "method": "qwen_shot_1",
+      "precision": "0.032761",
+      "recall": "0.018043",
+      "micro_f1": "0.023271",
+      "tp": "147",
+      "fp": "4340",
+      "fn": "8000"
+    },
+    {
+      "method": "qwen_shot_3",
+      "precision": "0.029477",
+      "recall": "0.017921",
+      "micro_f1": "0.022290",
+      "tp": "146",
+      "fp": "4807",
+      "fn": "8001"
+    }
+  ],
+  "test_score_source": "outputs/metrics/qwen_3b_one.csv",
+  "test_score_method": "qwen_3b_one",
+  "selection_written_at": "2026-10-16T01:35:31.676678+00:00",
+  "test_score": {
+    "method": "qwen_3b_one",
+    "precision": "0.030572",
+    "recall": "0.017634",
+    "micro_f1": "0.022367",
+    "tp": "86",
+    "fp": "2727",
+    "fn": "4791"
+  },
+  "test_score_filled_at": "2026-10-16T06:45:50.486052+00:00"
+}

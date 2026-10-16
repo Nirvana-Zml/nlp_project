@@ -1,0 +1,29 @@
+{
+  "qwen_shot_0": {
+    "documents": 1500,
+    "mean_latency_sec": 8.695468,
+    "mean_input_tokens": 231.228667,
+    "mean_output_tokens": 74.593333,
+    "parse_failures": 40,
+    "invalid_entities": 277,
+    "surface_mismatches": 2709
+  },
+  "qwen_shot_1": {
+    "documents": 1500,
+    "mean_latency_sec": 12.472886,
+    "mean_input_tokens": 420.228667,
+    "mean_output_tokens": 99.198667,
+    "parse_failures": 23,
+    "invalid_entities": 267,
+    "surface_mismatches": 4263
+  },
+  "qwen_shot_3": {
+    "documents": 1500,
+    "mean_latency_sec": 12.660887,
+    "mean_input_tokens": 632.228667,
+    "mean_output_tokens": 125.242,
+    "parse_failures": 39,
+    "invalid_entities": 715,
+    "surface_mismatches": 4764
+  }
+}

@@ -1,0 +1,109 @@
+created_at=2026-10-14T23:57:51.617757+00:00
+base_config=configs/qwen_3b.yaml
+model_path=D:/models/Qwen2.5-3B-Instruct
+quantization=4bit_nf4 double_quant=true compute_dtype=float16
+temperature=0
+do_sample=false
+max_new_tokens=1536
+repetition_penalty=1.0
+batch_size=1
+seed=42
+shot_counts=0,1,3
+one_shot_source_index=3949
+three_shot_source_index=3949,5340,1237
+example_split=train
+tune_documents=1500
+subset=false
+api_unit_price=none
+prompt_source=configs/qwen_3b.yaml
+prompt_template="任务：从给定中文医学文本中抽取医学实体。\n\n允许类别：\ndis：疾病\nsym：临床表现\ndru：药物\nequ：医疗设备\npro：医疗程序\nbod：身体部位\nite：医学检验项目\nmic：微生物\ndep：科室\n\n要求：\n1. 实体必须是原文中的连续片段。\n2. 不得补充原文中不存在的内容。\n3. 下标左闭右开，必须满足 text[start_idx:end_idx] 等于实体表面。\n4. 可以输出嵌套或重叠的实体。\n5. 只输出一个 JSON 对象，不要解释。\n\n输出格式：\n{\"entities\":[{\"entity\":\"实体表面\",\"type\":\"dis\",\"start_idx\":0,\"end_idx\":2}]}\n\n{examples}医学文本：\n{text}\n"
+on_load_failure=stop_no_precision_change_no_subset
+start method=qwen_shot_0_tune already_done=0 remaining=1500
+start method=qwen_shot_1_tune already_done=0 remaining=1500
+start method=qwen_shot_3_tune already_done=0 remaining=1500
+created_at=2026-10-15T10:21:28.271612+00:00
+base_config=configs/qwen_3b.yaml
+model_path=D:/models/Qwen2.5-3B-Instruct
+quantization=4bit_nf4 double_quant=true compute_dtype=float16
+temperature=0
+do_sample=false
+max_new_tokens=1536
+repetition_penalty=1.0
+batch_size=1
+seed=42
+shot_counts=0,1,3
+one_shot_source_index=3949
+three_shot_source_index=3949,5340,1237
+example_split=train
+tune_documents=1500
+subset=false
+api_unit_price=none
+prompt_source=configs/qwen_3b.yaml
+prompt_template="任务：从给定中文医学文本中抽取医学实体。\n\n允许类别：\ndis：疾病\nsym：临床表现\ndru：药物\nequ：医疗设备\npro：医疗程序\nbod：身体部位\nite：医学检验项目\nmic：微生物\ndep：科室\n\n要求：\n1. 实体必须是原文中的连续片段。\n2. 不得补充原文中不存在的内容。\n3. 下标左闭右开，必须满足 text[start_idx:end_idx] 等于实体表面。\n4. 可以输出嵌套或重叠的实体。\n5. 只输出一个 JSON 对象，不要解释。\n\n输出格式：\n{\"entities\":[{\"entity\":\"实体表面\",\"type\":\"dis\",\"start_idx\":0,\"end_idx\":2}]}\n\n{examples}医学文本：\n{text}\n"
+on_load_failure=stop_no_precision_change_no_subset
+start method=qwen_shot_3_tune already_done=43 remaining=1457
+created_at=2026-10-15T23:35:11.685075+00:00
+base_config=configs/qwen_3b.yaml
+model_path=D:/models/Qwen2.5-3B-Instruct
+quantization=4bit_nf4 double_quant=true compute_dtype=float16
+temperature=0
+do_sample=false
+max_new_tokens=1536
+repetition_penalty=1.0
+batch_size=1
+seed=42
+shot_counts=0,1,3
+one_shot_source_index=3949
+three_shot_source_index=3949,5340,1237
+example_split=train
+tune_documents=1500
+subset=false
+api_unit_price=none
+prompt_source=configs/qwen_3b.yaml
+prompt_template="任务：从给定中文医学文本中抽取医学实体。\n\n允许类别：\ndis：疾病\nsym：临床表现\ndru：药物\nequ：医疗设备\npro：医疗程序\nbod：身体部位\nite：医学检验项目\nmic：微生物\ndep：科室\n\n要求：\n1. 实体必须是原文中的连续片段。\n2. 不得补充原文中不存在的内容。\n3. 下标左闭右开，必须满足 text[start_idx:end_idx] 等于实体表面。\n4. 可以输出嵌套或重叠的实体。\n5. 只输出一个 JSON 对象，不要解释。\n\n输出格式：\n{\"entities\":[{\"entity\":\"实体表面\",\"type\":\"dis\",\"start_idx\":0,\"end_idx\":2}]}\n\n{examples}医学文本：\n{text}\n"
+on_load_failure=stop_no_precision_change_no_subset
+start method=qwen_shot_3_tune already_done=1008 remaining=492
+RESULT method=qwen_shot_0 precision=0.025696 recall=0.008838 micro_f1=0.013152 tp=72 fp=2730 fn=8075 mean_latency_sec=8.695468 mean_input_tokens=231.228667 mean_output_tokens=74.593333 parse_failures=40 invalid_entities=277 surface_mismatches=2709
+RESULT method=qwen_shot_1 precision=0.032761 recall=0.018043 micro_f1=0.023271 tp=147 fp=4340 fn=8000 mean_latency_sec=12.472886 mean_input_tokens=420.228667 mean_output_tokens=99.198667 parse_failures=23 invalid_entities=267 surface_mismatches=4263
+RESULT method=qwen_shot_3 precision=0.029477 recall=0.017921 micro_f1=0.022290 tp=146 fp=4807 fn=8001 mean_latency_sec=12.660887 mean_input_tokens=632.228667 mean_output_tokens=125.242 parse_failures=39 invalid_entities=715 surface_mismatches=4764
+selection_already_present=false
+test_score_in_selection=false
+selected_shots=1
+selection_written_before_main_test=true
+test_score_source=outputs/metrics/qwen_3b_one.csv
+regenerated_zero_or_three=false
+start method=qwen_3b_one already_done=0 remaining=1000
+created_at=2026-10-16T05:12:29.994157+00:00
+base_config=configs/qwen_3b.yaml
+model_path=D:/models/Qwen2.5-3B-Instruct
+quantization=4bit_nf4 double_quant=true compute_dtype=float16
+temperature=0
+do_sample=false
+max_new_tokens=1536
+repetition_penalty=1.0
+batch_size=1
+seed=42
+shot_counts=0,1,3
+one_shot_source_index=3949
+three_shot_source_index=3949,5340,1237
+example_split=train
+tune_documents=1500
+subset=false
+api_unit_price=none
+prompt_source=configs/qwen_3b.yaml
+prompt_template="任务：从给定中文医学文本中抽取医学实体。\n\n允许类别：\ndis：疾病\nsym：临床表现\ndru：药物\nequ：医疗设备\npro：医疗程序\nbod：身体部位\nite：医学检验项目\nmic：微生物\ndep：科室\n\n要求：\n1. 实体必须是原文中的连续片段。\n2. 不得补充原文中不存在的内容。\n3. 下标左闭右开，必须满足 text[start_idx:end_idx] 等于实体表面。\n4. 可以输出嵌套或重叠的实体。\n5. 只输出一个 JSON 对象，不要解释。\n\n输出格式：\n{\"entities\":[{\"entity\":\"实体表面\",\"type\":\"dis\",\"start_idx\":0,\"end_idx\":2}]}\n\n{examples}医学文本：\n{text}\n"
+on_load_failure=stop_no_precision_change_no_subset
+RESULT method=qwen_shot_0 precision=0.025696 recall=0.008838 micro_f1=0.013152 tp=72 fp=2730 fn=8075 mean_latency_sec=8.695468 mean_input_tokens=231.228667 mean_output_tokens=74.593333 parse_failures=40 invalid_entities=277 surface_mismatches=2709
+RESULT method=qwen_shot_1 precision=0.032761 recall=0.018043 micro_f1=0.023271 tp=147 fp=4340 fn=8000 mean_latency_sec=12.472886 mean_input_tokens=420.228667 mean_output_tokens=99.198667 parse_failures=23 invalid_entities=267 surface_mismatches=4263
+RESULT method=qwen_shot_3 precision=0.029477 recall=0.017921 micro_f1=0.022290 tp=146 fp=4807 fn=8001 mean_latency_sec=12.660887 mean_input_tokens=632.228667 mean_output_tokens=125.242 parse_failures=39 invalid_entities=715 surface_mismatches=4764
+selection_already_present=true
+selected_shots_unchanged=true
+selected_shots=1
+selection_written_before_main_test=true
+test_score_source=outputs/metrics/qwen_3b_one.csv
+regenerated_zero_or_three=false
+start method=qwen_3b_one already_done=438 remaining=562
+RESULT method=qwen_3b_one precision=0.030572 recall=0.017634 micro_f1=0.022367 tp=86 fp=2727 fn=4791 mean_latency_sec=10.691977 mean_input_tokens=417.386 mean_output_tokens=98.695 parse_failures=17 invalid_entities=217 surface_mismatches=2694
+generated_one_shot_main_test=true
+main_test_prediction_reused=false
+test_cost_source=outputs/metrics/qwen_3b_one_cost.json method=qwen_3b_one
