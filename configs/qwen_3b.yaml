@@ -1,0 +1,43 @@
+model_path: D:/models/Qwen2.5-3B-Instruct
+quantization: 4bit_nf4
+bnb_4bit_quant_type: nf4
+bnb_4bit_use_double_quant: true
+bnb_4bit_compute_dtype: float16
+temperature: 0
+do_sample: false
+max_new_tokens: 1536
+repetition_penalty: 1.0
+batch_size: 1
+seed: 42
+example_source_index: [3949, 5340, 1237]
+train_path: data/processed/train.json
+test_path: data/processed/test.json
+manifest_path: data/processed/split_manifest.json
+expected_test_documents: 1000
+expected_gold_entities: 4877
+prompt_template: |
+  任务：从给定中文医学文本中抽取医学实体。
+
+  允许类别：
+  dis：疾病
+  sym：临床表现
+  dru：药物
+  equ：医疗设备
+  pro：医疗程序
+  bod：身体部位
+  ite：医学检验项目
+  mic：微生物
+  dep：科室
+
+  要求：
+  1. 实体必须是原文中的连续片段。
+  2. 不得补充原文中不存在的内容。
+  3. 下标左闭右开，必须满足 text[start_idx:end_idx] 等于实体表面。
+  4. 可以输出嵌套或重叠的实体。
+  5. 只输出一个 JSON 对象，不要解释。
+
+  输出格式：
+  {"entities":[{"entity":"实体表面","type":"dis","start_idx":0,"end_idx":2}]}
+
+  {examples}医学文本：
+  {text}

@@ -1,0 +1,20 @@
+{
+  "qwen_3b_zero": {
+    "documents": 1000,
+    "mean_latency_sec": 6.418967,
+    "mean_input_tokens": 228.386,
+    "mean_output_tokens": 71.522,
+    "parse_failures": 32,
+    "invalid_entities": 164,
+    "surface_mismatches": 1668
+  },
+  "qwen_3b_three": {
+    "documents": 1000,
+    "mean_latency_sec": 10.537989,
+    "mean_input_tokens": 629.386,
+    "mean_output_tokens": 124.49,
+    "parse_failures": 25,
+    "invalid_entities": 473,
+    "surface_mismatches": 3058
+  }
+}
