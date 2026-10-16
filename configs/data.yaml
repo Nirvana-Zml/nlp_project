@@ -1,0 +1,21 @@
+seed: 42
+raw_dir: data/raw/CMeEE-V2
+files:
+  train: CMeEE-V2_train.json
+  dev: CMeEE-V2_dev.json
+  test: CMeEE-V2_test.json
+entity_types:
+  - dis
+  - sym
+  - dru
+  - equ
+  - pro
+  - bod
+  - ite
+  - mic
+  - dep
+train_size: 13500
+tune_size: 1500
+main_test_size: 1000
+processed_dir: data/processed
+outputs_dir: outputs

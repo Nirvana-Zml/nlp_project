@@ -1,0 +1,207 @@
+{
+  "seed": 42,
+  "offset_rule": "text[start_idx:end_idx] == entity",
+  "official_test_excluded": "CMeEE-V2_test.json",
+  "sources": {
+    "train": {
+      "file": "CMeEE-V2_train.json",
+      "sha256": "a856c9358b4efbb90409cf320b9172da98ccf5f0e192c917017042963e95624c",
+      "docs": 15000
+    },
+    "dev": {
+      "file": "CMeEE-V2_dev.json",
+      "sha256": "80b7d00078d27855114ceeb35524597aecce8f49103cdbb868fae11e02f4a0ed",
+      "docs": 5000
+    }
+  },
+  "train_method": "random.Random(seed).shuffle on official train indices; first train_size, rest tune",
+  "test_method": "separate random.Random(seed).shuffle on official dev indices; take documents that cover missing required features in shuffle order, then fill to main_test_size",
+  "test_required_features": [
+    "nine entity types",
+    "nested",
+    "non_nested",
+    "len:1-2",
+    "len:3-5",
+    "len:6+",
+    "has_ascii"
+  ],
+  "test_uncovered_features": [],
+  "test_note": "dev_full contains this main test split and is not an independent score set",
+  "sizes": {
+    "train_indices": 13500,
+    "tune_indices": 1500,
+    "test_indices": 1000
+  },
+  "index_checks": {
+    "train_tune_disjoint": true,
+    "train_tune_union": 15000,
+    "test_unique": 1000,
+    "test_within_dev": true
+  },
+  "splits": {
+    "train": {
+      "docs": 13500,
+      "entities": 74502,
+      "empty_docs": 63,
+      "nested_docs": 2944,
+      "non_nested_docs": 10556,
+      "ascii_docs": 7318,
+      "type_counts": {
+        "dis": 17405,
+        "sym": 15403,
+        "dru": 3959,
+        "equ": 757,
+        "pro": 8779,
+        "bod": 21799,
+        "ite": 4004,
+        "mic": 2090,
+        "dep": 306
+      },
+      "entity_length_counts": {
+        "1-2": 19911,
+        "3-5": 32213,
+        "6+": 22378
+      },
+      "docs_with_feature": {
+        "has_ascii": 7318,
+        "len:1-2": 7987,
+        "len:3-5": 11333,
+        "len:6+": 9521,
+        "nested": 2944,
+        "non_nested": 10556,
+        "type:bod": 7163,
+        "type:dep": 189,
+        "type:dis": 7770,
+        "type:dru": 1765,
+        "type:equ": 456,
+        "type:ite": 1850,
+        "type:mic": 972,
+        "type:pro": 4531,
+        "type:sym": 6173
+      }
+    },
+    "tune": {
+      "docs": 1500,
+      "entities": 8147,
+      "empty_docs": 5,
+      "nested_docs": 315,
+      "non_nested_docs": 1185,
+      "ascii_docs": 796,
+      "type_counts": {
+        "dis": 1966,
+        "sym": 1715,
+        "dru": 420,
+        "equ": 132,
+        "pro": 909,
+        "bod": 2307,
+        "ite": 406,
+        "mic": 253,
+        "dep": 39
+      },
+      "entity_length_counts": {
+        "1-2": 2217,
+        "3-5": 3570,
+        "6+": 2360
+      },
+      "docs_with_feature": {
+        "has_ascii": 796,
+        "len:1-2": 894,
+        "len:3-5": 1283,
+        "len:6+": 1049,
+        "nested": 315,
+        "non_nested": 1185,
+        "type:bod": 800,
+        "type:dep": 20,
+        "type:dis": 869,
+        "type:dru": 195,
+        "type:equ": 63,
+        "type:ite": 204,
+        "type:mic": 113,
+        "type:pro": 471,
+        "type:sym": 694
+      }
+    },
+    "test": {
+      "docs": 1000,
+      "entities": 4877,
+      "empty_docs": 4,
+      "nested_docs": 177,
+      "non_nested_docs": 823,
+      "ascii_docs": 512,
+      "type_counts": {
+        "dis": 1197,
+        "sym": 994,
+        "dru": 301,
+        "equ": 43,
+        "pro": 662,
+        "bod": 1324,
+        "ite": 232,
+        "mic": 111,
+        "dep": 13
+      },
+      "entity_length_counts": {
+        "1-2": 1132,
+        "3-5": 2134,
+        "6+": 1611
+      },
+      "docs_with_feature": {
+        "has_ascii": 512,
+        "len:1-2": 523,
+        "len:3-5": 813,
+        "len:6+": 695,
+        "nested": 177,
+        "non_nested": 823,
+        "type:bod": 480,
+        "type:dep": 11,
+        "type:dis": 551,
+        "type:dru": 136,
+        "type:equ": 25,
+        "type:ite": 116,
+        "type:mic": 54,
+        "type:pro": 354,
+        "type:sym": 406
+      }
+    },
+    "dev_full": {
+      "docs": 5000,
+      "entities": 26081,
+      "empty_docs": 18,
+      "nested_docs": 939,
+      "non_nested_docs": 4061,
+      "ascii_docs": 2602,
+      "type_counts": {
+        "dis": 6328,
+        "sym": 5297,
+        "dru": 1566,
+        "equ": 164,
+        "pro": 3319,
+        "bod": 7361,
+        "ite": 1339,
+        "mic": 621,
+        "dep": 86
+      },
+      "entity_length_counts": {
+        "1-2": 6255,
+        "3-5": 11332,
+        "6+": 8494
+      },
+      "docs_with_feature": {
+        "has_ascii": 2602,
+        "len:1-2": 2771,
+        "len:3-5": 4090,
+        "len:6+": 3497,
+        "nested": 939,
+        "non_nested": 4061,
+        "type:bod": 2467,
+        "type:dep": 54,
+        "type:dis": 2798,
+        "type:dru": 719,
+        "type:equ": 110,
+        "type:ite": 648,
+        "type:mic": 272,
+        "type:pro": 1724,
+        "type:sym": 2139
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+method,precision,recall,micro_f1,tp,fp,fn
+dictionary_all,0.167021,0.516096,0.252369,2517,12553,2360
+dictionary_longest,0.343711,0.457248,0.392433,2230,4258,2647

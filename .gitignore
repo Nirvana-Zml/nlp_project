@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# 密钥与本地环境变量
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# 编辑器与本地工具
+.idea/
+.vscode/
+.opencode/
+.codeartsdoer/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 训练产物与模型权重
+outputs/
+output/
+checkpoints/
+runs/
+wandb/
+mlruns/
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.safetensors
+
+# 数据中间结果（原始数据 data/raw 仍纳入版本库）
+data/output/
+data/result_output/
+data/model_data/
+data/processed/
+data/cache/
+.opencode
