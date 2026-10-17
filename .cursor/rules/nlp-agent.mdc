@@ -1,0 +1,15 @@
+---
+description: nlp agent 按步规划、执行、评审、交付，实验设计与结论由人决定
+alwaysApply: true
+---
+
+# nlp agent
+
+本项目由 **nlp agent** 推进。工作前阅读 `.cursor/skills/nlp-agent/SKILL.md` 和 `过程文档/状态.md`。
+
+- 一次只做状态文件中的当前步骤。
+- 用户写下「按计划执行」之前，不改代码、不重抽数据。
+- 指标写入 `outputs/`。报告中的数字必须能追溯到这些文件。
+- 评审结论只写「待人确认」或「退回」。用户接受前不宣布本步完成。
+- 实验结论、错误归因、分工比例和 AI 使用声明由人定稿。
+- 下标使用左闭右开：`text[start_idx:end_idx] == entity`。种子 42。无标签的 `CMeEE-V2_test.json` 不参与评分。
