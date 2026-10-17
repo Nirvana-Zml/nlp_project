@@ -1,0 +1,266 @@
+[
+  {
+    "method": "qwen_3b_one",
+    "prediction_file": "outputs/predictions/qwen_3b_one.json",
+    "source_index": 95,
+    "category": "解析失败",
+    "text": "7.肾上腺皮质激素严格除外禁忌证后，重症患儿（高热、咳重、气促、胸部X线片改变明显且进展快，或伴有其他脏器损害）在加强支持治疗的前提下可选用。",
+    "gold": [
+      {
+        "start_idx": 2,
+        "end_idx": 9,
+        "type": "dru",
+        "entity": "肾上腺皮质激素"
+      },
+      {
+        "start_idx": 23,
+        "end_idx": 25,
+        "type": "sym",
+        "entity": "高热"
+      },
+      {
+        "start_idx": 26,
+        "end_idx": 28,
+        "type": "sym",
+        "entity": "咳重"
+      },
+      {
+        "start_idx": 29,
+        "end_idx": 31,
+        "type": "sym",
+        "entity": "气促"
+      },
+      {
+        "start_idx": 32,
+        "end_idx": 45,
+        "type": "sym",
+        "entity": "胸部X线片改变明显且进展快"
+      },
+      {
+        "start_idx": 32,
+        "end_idx": 37,
+        "type": "pro",
+        "entity": "胸部X线片"
+      },
+      {
+        "start_idx": 49,
+        "end_idx": 55,
+        "type": "dis",
+        "entity": "其他脏器损害"
+      }
+    ],
+    "pred": [],
+    "attribution": "",
+    "improvement": "",
+    "raw_output": "{\"entities\":[{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":0,\"end_idx\":4},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":10,\"end_idx\":13},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":14,\"end_idx\":16},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":17,\"end_idx\":19},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":20,\"end_idx\":34},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":35,\"end_idx\":40},{\"entity\":\"肾上腺皮质激素\",\"type\":\"dru\",\"start_idx\":42,\"end_idx\":49},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":50,\"end_idx\":54},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":56,\"end_idx\":59},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":60,\"end_idx\":62},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":63,\"end_idx\":65},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":66,\"end_idx\":80},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":81,\"end_idx\":86},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":87,\"end_idx\":91},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":93,\"end_idx\":96},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":97,\"end_idx\":99},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":100,\"end_idx\":102},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":103,\"end_idx\":117},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":118,\"end_idx\":123},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":124,\"end_idx\":128},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":130,\"end_idx\":133},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":134,\"end_idx\":136},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":137,\"end_idx\":139},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":140,\"end_idx\":154},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":155,\"end_idx\":160},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":161,\"end_idx\":165},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":167,\"end_idx\":170},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":171,\"end_idx\":173},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":174,\"end_idx\":176},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":177,\"end_idx\":191},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":192,\"end_idx\":197},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":198,\"end_idx\":202},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":204,\"end_idx\":207},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":208,\"end_idx\":210},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":211,\"end_idx\":213},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":214,\"end_idx\":228},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":229,\"end_idx\":234},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":235,\"end_idx\":239},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":241,\"end_idx\":244},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":245,\"end_idx\":247},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":248,\"end_idx\":250},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":251,\"end_idx\":265},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":266,\"end_idx\":271},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":272,\"end_idx\":276},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":278,\"end_idx\":281},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":282,\"end_idx\":284},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":285,\"end_idx\":287},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":288,\"end_idx\":302},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":303,\"end_idx\":308},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":309,\"end_idx\":313},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":315,\"end_idx\":318},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":319,\"end_idx\":321},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":322,\"end_idx\":324},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":325,\"end_idx\":339},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":340,\"end_idx\":345},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":346,\"end_idx\":350},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":352,\"end_idx\":355},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":356,\"end_idx\":358},{\"entity\":\"气促\",\"type\":\"sym\",\"start_idx\":359,\"end_idx\":361},{\"entity\":\"胸部X线片改变明显且进展快\",\"type\":\"sym\",\"start_idx\":362,\"end_idx\":376},{\"entity\":\"其他脏器损害\",\"type\":\"sym\",\"start_idx\":377,\"end_idx\":382},{\"entity\":\"重症患儿\",\"type\":\"dis\",\"start_idx\":383,\"end_idx\":387},{\"entity\":\"高热\",\"type\":\"sym\",\"start_idx\":389,\"end_idx\":392},{\"entity\":\"咳重\",\"type\":\"sym\",\"start_idx\":393,\"end_idx\":395},{\"",
+    "discarded": []
+  },
+  {
+    "method": "bert_bio",
+    "prediction_file": "outputs/predictions/bert_bio.json",
+    "source_index": 0,
+    "category": "边界错误",
+    "text": "对儿童SARST细胞亚群的研究表明，与成人SARS相比，儿童细胞下降不明显，证明上述推测成立。",
+    "gold": [
+      {
+        "start_idx": 3,
+        "end_idx": 12,
+        "type": "bod",
+        "entity": "SARST细胞亚群"
+      },
+      {
+        "start_idx": 19,
+        "end_idx": 25,
+        "type": "dis",
+        "entity": "成人SARS"
+      },
+      {
+        "start_idx": 30,
+        "end_idx": 34,
+        "type": "sym",
+        "entity": "细胞下降"
+      },
+      {
+        "start_idx": 30,
+        "end_idx": 32,
+        "type": "bod",
+        "entity": "细胞"
+      }
+    ],
+    "pred": [
+      {
+        "start_idx": 1,
+        "end_idx": 12,
+        "type": "bod",
+        "entity": "儿童SARST细胞亚群"
+      },
+      {
+        "start_idx": 19,
+        "end_idx": 25,
+        "type": "dis",
+        "entity": "成人SARS"
+      },
+      {
+        "start_idx": 28,
+        "end_idx": 34,
+        "type": "sym",
+        "entity": "儿童细胞下降"
+      }
+    ],
+    "attribution": "",
+    "improvement": "",
+    "token_pred": [
+      [
+        "O",
+        "B-bod",
+        "I-bod",
+        "I-bod",
+        "I-bod",
+        "I-bod",
+        "I-bod",
+        "I-bod",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-dis",
+        "I-dis",
+        "I-dis",
+        "O",
+        "O",
+        "O",
+        "B-sym",
+        "I-sym",
+        "I-sym",
+        "I-sym",
+        "I-sym",
+        "I-sym",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O"
+      ]
+    ]
+  },
+  {
+    "method": "bert_bio",
+    "prediction_file": "outputs/predictions/bert_bio.json",
+    "source_index": 22,
+    "category": "类型错误",
+    "text": "SARS患儿有部分出现心脏损害，对有心脏损害者应进行床边动态心电监护。",
+    "gold": [
+      {
+        "start_idx": 0,
+        "end_idx": 4,
+        "type": "dis",
+        "entity": "SARS"
+      },
+      {
+        "start_idx": 11,
+        "end_idx": 13,
+        "type": "bod",
+        "entity": "心脏"
+      },
+      {
+        "start_idx": 11,
+        "end_idx": 15,
+        "type": "sym",
+        "entity": "心脏损害"
+      },
+      {
+        "start_idx": 18,
+        "end_idx": 20,
+        "type": "bod",
+        "entity": "心脏"
+      },
+      {
+        "start_idx": 18,
+        "end_idx": 22,
+        "type": "sym",
+        "entity": "心脏损害"
+      },
+      {
+        "start_idx": 26,
+        "end_idx": 34,
+        "type": "pro",
+        "entity": "床边动态心电监护"
+      }
+    ],
+    "pred": [
+      {
+        "start_idx": 0,
+        "end_idx": 4,
+        "type": "dis",
+        "entity": "SARS"
+      },
+      {
+        "start_idx": 11,
+        "end_idx": 15,
+        "type": "dis",
+        "entity": "心脏损害"
+      },
+      {
+        "start_idx": 18,
+        "end_idx": 22,
+        "type": "dis",
+        "entity": "心脏损害"
+      },
+      {
+        "start_idx": 26,
+        "end_idx": 34,
+        "type": "pro",
+        "entity": "床边动态心电监护"
+      }
+    ],
+    "attribution": "",
+    "improvement": "",
+    "token_pred": [
+      [
+        "B-dis",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-dis",
+        "I-dis",
+        "I-dis",
+        "I-dis",
+        "O",
+        "O",
+        "O",
+        "B-dis",
+        "I-dis",
+        "I-dis",
+        "I-dis",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-pro",
+        "I-pro",
+        "I-pro",
+        "I-pro",
+        "I-pro",
+        "I-pro",
+        "I-pro",
+        "I-pro",
+        "O"
+      ]
+    ]
+  }
+]
