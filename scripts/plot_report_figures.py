@@ -274,54 +274,10 @@ def add_log_colorbar(fig, image, ax) -> None:
     colorbar.set_label("计数", fontsize=8)
 
 
-def ribbon(ax, x0: float, band0: tuple[float, float], x1: float, band1: tuple[float, float], color: str) -> None:
-    y0b, y0t = band0
-    y1b, y1t = band1
-    step = np.linspace(0, 1, 60)
-    smooth = step * step * (3 - 2 * step)
-    xs = x0 + (x1 - x0) * smooth
-    top = y0t + (y1t - y0t) * smooth
-    bottom = y0b + (y1b - y0b) * smooth
-    ax.fill(
-        np.concatenate([xs, xs[::-1]]),
-        np.concatenate([top, bottom[::-1]]),
-        color=color,
-        alpha=0.9,
-        linewidth=0,
-        zorder=2,
-    )
-
-
-def stack_bands(sizes: list[int], top: float = 1.0, gap: float = 0.02) -> list[tuple[float, float]]:
-    usable = top - gap * (len(sizes) - 1)
-    scale = usable / sum(sizes)
-    cursor = top
-    bands = []
-    for size in sizes:
-        height = size * scale
-        bands.append((cursor - height, cursor))
-        cursor -= height + gap
-    return bands
-
-
-def split_band(band: tuple[float, float], sizes: list[int]) -> list[tuple[float, float]]:
-    bottom, top = band
-    if len(sizes) == 1:
-        return [band]
-    gap = (top - bottom) * 0.03 / (len(sizes) - 1)
-    usable = (top - bottom) - gap * (len(sizes) - 1)
-    cursor = top
-    parts = []
-    for size in sizes:
-        height = usable * size / sum(sizes)
-        parts.append((cursor - height, cursor))
-        cursor -= height + gap
-    return parts
-
-
 def fig_split_scale(summary: dict, profile: dict) -> None:
-    fig = new_figure((7.2, 3.7))
+    fig = new_figure((6.4, 3.5))
     ax = fig.subplots()
+    style_ax(ax)
     official = summary["files"]
     train_docs = official["CMeEE-V2_train.json"]["docs"]
     dev_docs = official["CMeEE-V2_dev.json"]["docs"]
@@ -329,51 +285,40 @@ def fig_split_scale(summary: dict, profile: dict) -> None:
     project_docs = {key: profile["sizes"][f"{key}_indices"] for key in ("train", "tune", "test")}
     project_entities = {key: profile["splits"][key]["entities"] for key in ("train", "tune", "test")}
     dev_rest = dev_docs - project_docs["test"]
-    left = stack_bands([train_docs, dev_docs, test_docs])
-    right = stack_bands(
-        [project_docs["train"], project_docs["tune"], project_docs["test"], dev_rest, test_docs],
-        gap=0.016,
-    )
-    left_parts = [
-        split_band(left[0], [project_docs["train"], project_docs["tune"]]),
-        split_band(left[1], [project_docs["test"], dev_rest]),
-        split_band(left[2], [test_docs]),
+    segments = [
+        ("训练", [project_docs["train"], 0, 0], NAVY, project_entities["train"]),
+        ("调参", [project_docs["tune"], 0, 0], TEAL, project_entities["tune"]),
+        ("主测试", [0, project_docs["test"], 0], RED, project_entities["test"]),
+        ("验证集其余", [0, dev_rest, 0], STEEL, None),
+        ("无标签测试集", [0, 0, test_docs], PEACH, None),
     ]
-    flows = [
-        (left_parts[0][0], right[0], NAVY),
-        (left_parts[0][1], right[1], TEAL),
-        (left_parts[1][0], right[2], RED),
-        (left_parts[1][1], right[3], STEEL),
-        (left_parts[2][0], right[4], PEACH),
-    ]
-    x0, x1 = 0.22, 1.05
-    for source, target, color in flows:
-        ribbon(ax, x0, source, x1, target, color)
-    for band in left + right:
-        ax.add_patch(
-            plt.Rectangle((0.0, band[0]), 0.22, band[1] - band[0], facecolor="#E8EEF2", edgecolor="white", lw=0.4, zorder=3)
-            if band in left
-            else plt.Rectangle((1.05, band[0]), 0.16, band[1] - band[0], facecolor="#E8EEF2", edgecolor="white", lw=0.4, zorder=3)
+    xs = np.arange(3)
+    bottoms = np.zeros(3)
+    for name, heights, color, entities in segments:
+        label = f"{name}  {fmt_int(sum(heights))} 篇"
+        if entities is not None:
+            label += f"，{fmt_int(entities)} 条"
+        ax.bar(
+            xs,
+            heights,
+            bottom=bottoms,
+            width=0.58,
+            color=color,
+            edgecolor="white",
+            linewidth=0.6,
+            label=label,
+            zorder=3,
         )
-    left_labels = [
-        (left[0], f"训练集\n{train_docs} 篇"),
-        (left[1], f"验证集\n{dev_docs} 篇"),
-        (left[2], f"无标签测试集\n{test_docs} 篇"),
-    ]
-    right_labels = [
-        (right[0], f"训练  {project_docs['train']} 篇\n{project_entities['train']} 条"),
-        (right[1], f"调参  {project_docs['tune']} 篇，{project_entities['tune']} 条"),
-        (right[2], f"主测试  {project_docs['test']} 篇，{project_entities['test']} 条"),
-        (right[3], f"验证集其余  {dev_rest} 篇"),
-        (right[4], f"无标签测试集  {test_docs} 篇"),
-    ]
-    for band, text in left_labels:
-        ax.text(-0.03, (band[0] + band[1]) / 2, text, ha="right", va="center", fontsize=7, color=BLACK)
-    for band, text in right_labels:
-        ax.text(1.24, (band[0] + band[1]) / 2, text, ha="left", va="center", fontsize=7, color=BLACK)
-    ax.set_xlim(-0.42, 1.78)
-    ax.set_ylim(-0.02, 1.05)
-    ax.axis("off")
+        bottoms = bottoms + np.array(heights, dtype=float)
+    for x, total in zip(xs, (train_docs, dev_docs, test_docs)):
+        ax.text(x, total + 350, fmt_int(total), ha="center", va="bottom", fontsize=7, color=BLACK)
+    ax.set_xticks(xs, ["官方训练集", "官方验证集", "无标签测试集"])
+    ax.set_ylabel("文档数")
+    ax.set_xlim(-0.55, 2.55)
+    ax.set_ylim(0, 18000)
+    ax.yaxis.set_major_locator(plt.MultipleLocator(5000))
+    legend = ax.legend(loc="upper right", frameon=True)
+    style_legend(legend)
     save(fig, "01_split_scale.png")
 
 
@@ -438,7 +383,7 @@ def fig_span_mismatch(log_text: str) -> None:
             "test_token_span_mismatch",
         ],
     )
-    fig = new_figure((3.6, 2.55))
+    fig = new_figure((3.8, 2.7))
     ax = fig.subplots()
     style_ax(ax)
     labels = ["训练", "调参", "主测试"]
@@ -447,15 +392,22 @@ def fig_span_mismatch(log_text: str) -> None:
         keys["tune_token_span_mismatch"],
         keys["test_token_span_mismatch"],
     ]
-    y = np.arange(len(labels))
-    ax.hlines(y, 0, values, color=CYAN, linewidth=1.4, zorder=2)
-    ax.scatter(values, y, s=36, color=NAVY, zorder=3)
-    for yi, value in zip(y, values):
-        ax.text(value + max(values) * 0.03, yi, fmt_int(value), va="center", ha="left", fontsize=7)
-    ax.set_yticks(y, labels)
-    ax.set_xlim(0, max(values) * 1.28)
-    ax.set_xlabel("未对齐实体数")
-    ax.invert_yaxis()
+    colors = [NAVY, TEAL, RED]
+    xs = np.arange(len(labels))
+    bars = ax.bar(xs, values, width=0.55, color=colors, edgecolor="white", linewidth=0.6, zorder=3)
+    for bar, value in zip(bars, values):
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            value + max(values) * 0.03,
+            fmt_int(value),
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            color=BLACK,
+        )
+    ax.set_xticks(xs, labels)
+    ax.set_ylabel("未对齐实体数")
+    ax.set_ylim(0, max(values) * 1.22)
     save(fig, "04_span_mismatch.png")
 
 
