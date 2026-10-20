@@ -1,0 +1,192 @@
+{
+  "qwen_3b_one": {
+    "file": "outputs/predictions/qwen_3b_one.json",
+    "documents": 1000,
+    "parse_fail_docs": 17,
+    "parse_fail_gold_entities": 144,
+    "output_tokens_ge_1536": 16,
+    "parse_fail_and_output_tokens_ge_1536": 16,
+    "parse_fail_output_tokens_max": 1536,
+    "parse_fail_output_tokens_min": 30,
+    "mean_output_tokens": 98.695,
+    "gold_outcome": {
+      "exact": 86,
+      "miss": 2518,
+      "same_type_boundary": 1012,
+      "overlap_wrong_type": 1213,
+      "same_span_wrong_type": 48
+    },
+    "gold_entities": 4877,
+    "gold_with_repeated_surface_in_text": 774,
+    "source_index_95": {
+      "source_index": 95,
+      "text_chars": 71,
+      "output_tokens": 1536,
+      "max_new_tokens": 1536,
+      "reached_max_new_tokens": true,
+      "parse_ok": false,
+      "raw_chars": 3934,
+      "raw_closed": false,
+      "pred_count": 0
+    }
+  },
+  "qwen_3b_zero": {
+    "file": "outputs/predictions/qwen_3b_zero.json",
+    "documents": 1000,
+    "parse_fail_docs": 32,
+    "parse_fail_gold_entities": 354,
+    "output_tokens_ge_1536": 13,
+    "parse_fail_and_output_tokens_ge_1536": 13,
+    "parse_fail_output_tokens_max": 1536,
+    "parse_fail_output_tokens_min": 29,
+    "mean_output_tokens": 71.522,
+    "gold_outcome": {
+      "exact": 38,
+      "miss": 3306,
+      "overlap_wrong_type": 832,
+      "same_type_boundary": 680,
+      "same_span_wrong_type": 21
+    },
+    "gold_entities": 4877,
+    "gold_with_repeated_surface_in_text": 774,
+    "source_index_95": {
+      "source_index": 95,
+      "text_chars": 71,
+      "output_tokens": 138,
+      "max_new_tokens": 1536,
+      "reached_max_new_tokens": false,
+      "parse_ok": true,
+      "raw_chars": 371,
+      "raw_closed": true,
+      "pred_count": 6
+    }
+  },
+  "qwen_3b_three": {
+    "file": "outputs/predictions/qwen_3b_three.json",
+    "documents": 1000,
+    "parse_fail_docs": 25,
+    "parse_fail_gold_entities": 202,
+    "output_tokens_ge_1536": 24,
+    "parse_fail_and_output_tokens_ge_1536": 24,
+    "parse_fail_output_tokens_max": 1536,
+    "parse_fail_output_tokens_min": 28,
+    "mean_output_tokens": 124.49,
+    "gold_outcome": {
+      "same_type_boundary": 1030,
+      "overlap_wrong_type": 1280,
+      "miss": 2440,
+      "exact": 86,
+      "same_span_wrong_type": 41
+    },
+    "gold_entities": 4877,
+    "gold_with_repeated_surface_in_text": 774,
+    "source_index_95": {
+      "source_index": 95,
+      "text_chars": 71,
+      "output_tokens": 166,
+      "max_new_tokens": 1536,
+      "reached_max_new_tokens": false,
+      "parse_ok": true,
+      "raw_chars": 435,
+      "raw_closed": true,
+      "pred_count": 7
+    }
+  },
+  "bert_bio": {
+    "file": "outputs/predictions/bert_bio.json",
+    "documents": 1000,
+    "gold_outcome": {
+      "exact": 2873,
+      "same_type_boundary": 573,
+      "overlap_wrong_type": 1006,
+      "miss": 264,
+      "same_span_wrong_type": 161
+    },
+    "kept_after_flatten": {
+      "exact": 2787,
+      "same_type_boundary": 547,
+      "overlap_wrong_type": 321,
+      "miss": 233,
+      "same_span_wrong_type": 150
+    },
+    "dropped_by_flatten": {
+      "overlap_wrong_type": 685,
+      "miss": 31,
+      "same_type_boundary": 26,
+      "exact": 86,
+      "same_span_wrong_type": 11
+    },
+    "gold_entities": 4877,
+    "gold_with_repeated_surface_in_text": 774
+  },
+  "damage_surface_labels": {
+    "train": {
+      "by_type": {
+        "dis": 178,
+        "sym": 40,
+        "bod": 1,
+        "pro": 1
+      },
+      "surfaces": {
+        "肾损害": 16,
+        "肾脏损害": 7,
+        "肝功能损害": 6,
+        "心肌损害": 5,
+        "肝损害": 5,
+        "神经系统损害": 4,
+        "肾功能损害": 4,
+        "神经损害": 4,
+        "肾实质损害": 4,
+        "骨损害": 3,
+        "损害": 3,
+        "器官损害": 3
+      }
+    },
+    "tune": {
+      "by_type": {
+        "sym": 7,
+        "dis": 15
+      },
+      "surfaces": {
+        "肌膜受到损害": 1,
+        "重要器官损害": 1,
+        "皮肤或其他部位的黏膜损害": 1,
+        "记忆力损害": 1,
+        "肾功能已有损害": 1,
+        "肝功能损害": 1,
+        "小管和间质损害": 1,
+        "损害": 1,
+        "损害可蔓延至邻近的皮肤": 1,
+        "高血钾心肌损害": 1,
+        "脑损害": 1,
+        "伴有多种器官损害": 1
+      }
+    },
+    "test": {
+      "by_type": {
+        "pro": 1,
+        "sym": 7,
+        "dis": 10
+      },
+      "surfaces": {
+        "肾脏损害": 2,
+        "心脏损害": 2,
+        "清创、修复或置换损害的瓣膜": 1,
+        "糖耐量损害": 1,
+        "肾实质损害": 1,
+        "损害": 1,
+        "进行性肾脏损害": 1,
+        "肾小球损害": 1,
+        "肾脏实质损害": 1,
+        "严重脑损害": 1,
+        "脑发育造成损害": 1,
+        "一定程度的智力损害": 1
+      }
+    }
+  },
+  "rules": {
+    "gold_outcome": "exact, same_span_wrong_type, same_type_boundary, overlap_wrong_type, miss",
+    "max_new_tokens": 1536,
+    "flatten": "src.models.bio.flatten_entities"
+  }
+}

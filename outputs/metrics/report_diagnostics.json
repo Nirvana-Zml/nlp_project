@@ -1,0 +1,595 @@
+{
+  "timeline": {
+    "step1_created_at": "2026-10-14T11:00:41.751245+00:00",
+    "bert_created_at": "2026-10-14T11:55:06.640015+00:00",
+    "qwen_0_and_3_main_created_at": "2026-10-14T15:23:43.607275+00:00",
+    "qwen_0_and_3_main_results_in_same_log": 2,
+    "shot_log_created_at": [
+      "2026-10-14T23:57:51.617757+00:00",
+      "2026-10-15T10:21:28.271612+00:00",
+      "2026-10-15T23:35:11.685075+00:00",
+      "2026-10-16T05:12:29.994157+00:00"
+    ],
+    "shot_log_flags": [
+      "start method=qwen_shot_0_tune already_done=0 remaining=1500",
+      "start method=qwen_shot_1_tune already_done=0 remaining=1500",
+      "start method=qwen_shot_3_tune already_done=0 remaining=1500",
+      "start method=qwen_shot_3_tune already_done=43 remaining=1457",
+      "start method=qwen_shot_3_tune already_done=1008 remaining=492",
+      "selection_already_present=false",
+      "test_score_in_selection=false",
+      "selected_shots=1",
+      "selection_written_before_main_test=true",
+      "test_score_source=outputs/metrics/qwen_3b_one.csv",
+      "regenerated_zero_or_three=false",
+      "start method=qwen_3b_one already_done=0 remaining=1000",
+      "selection_already_present=true",
+      "selected_shots_unchanged=true",
+      "selected_shots=1",
+      "selection_written_before_main_test=true",
+      "test_score_source=outputs/metrics/qwen_3b_one.csv",
+      "regenerated_zero_or_three=false",
+      "start method=qwen_3b_one already_done=438 remaining=562",
+      "generated_one_shot_main_test=true"
+    ]
+  },
+  "prompt_check": {
+    "shot_log_prompt_copies": 4,
+    "shot_log_prompts_identical": true,
+    "shot_log_prompt_equals_current_yaml": true,
+    "early_main_log_contains_prompt_template": false
+  },
+  "flatten_reference_labels": {
+    "train": {
+      "gold": 74502,
+      "dropped_when_building_flat_reference": 13702,
+      "kept": 60800
+    },
+    "tune": {
+      "gold": 8147,
+      "dropped_when_building_flat_reference": 1458,
+      "kept": 6689
+    },
+    "test": {
+      "gold": 4877,
+      "dropped_when_building_flat_reference": 839,
+      "kept": 4038
+    }
+  },
+  "duplicate_texts": {
+    "within_split": {
+      "train": {
+        "documents": 13500,
+        "unique_texts": 13465,
+        "texts_repeated_inside_split": 35
+      },
+      "tune": {
+        "documents": 1500,
+        "unique_texts": 1498,
+        "texts_repeated_inside_split": 2
+      },
+      "test": {
+        "documents": 1000,
+        "unique_texts": 1000,
+        "texts_repeated_inside_split": 0
+      }
+    },
+    "texts_shared_across_splits": {
+      "train+tune": 6
+    }
+  },
+  "qwen_3b_one": {
+    "file": "outputs/predictions/qwen_3b_one.json",
+    "documents": 1000,
+    "parse_fail_docs": 17,
+    "scored": {
+      "precision": 0.030572342694632066,
+      "recall": 0.017633791265122,
+      "micro_f1": 0.022366710013003898,
+      "tp": 86,
+      "fp": 2727,
+      "fn": 4791
+    },
+    "reported_surface": {
+      "reported_items": 3033,
+      "reported_objects": 3033,
+      "has_surface": 3033,
+      "surface_present": 2986,
+      "present_and_gold_surface_type": 1429,
+      "gold_surface_type_index_hit": 64,
+      "index_error_recoverable": 1365,
+      "index_error_unique": 1164,
+      "surface_present_repeated": 361,
+      "gold_surface_type_repeated": 207,
+      "index_error_repeated": 201,
+      "present_not_gold_surface": 1013,
+      "present_gold_surface_wrong_type_only": 544,
+      "surface_absent": 47
+    },
+    "false_positive_class": {
+      "accidental_slice": 2629,
+      "boundary_shrink": 10,
+      "overlap_wrong_type": 35,
+      "boundary_expand": 8,
+      "no_overlap": 27,
+      "same_span_wrong_type": 15,
+      "boundary_partial": 3
+    },
+    "false_positive_total": 2727,
+    "true_positive_surface_equals_slice": 64,
+    "true_positive_surface_replaced": 22,
+    "distinct_gold_named_by_surface_and_type": 1473,
+    "distinct_gold_hit_by_submitted_index": 64,
+    "distinct_gold_unique_surface_wrong_index": 1155,
+    "rules": {
+      "surface_present": "自报表面是非空字符串，且在输入句中至少出现一次（允许重叠查找）",
+      "present_and_gold_surface_type": "表面出现在句中，且至少一条金标的切片与类型都相同",
+      "index_error_recoverable": "表面和类型能对上某条金标，句中也存在该金标跨度，但模型提交的下标不是这条金标",
+      "index_error_unique": "上述情况里表面只出现一次，正确下标唯一",
+      "fp_priority": "accidental_slice, same_span_wrong_type, boundary_expand, boundary_shrink, boundary_partial, overlap_wrong_type, no_overlap",
+      "accidental_slice": "该计分三元组的全部自报表面都与原文切片不同；解析器用切片替换表面后仍未命中金标",
+      "one_prediction_one_class": true,
+      "prediction_may_overlap_multiple_gold": true
+    }
+  },
+  "bert_bio_false_positive": {
+    "file": "outputs/predictions/bert_bio.json",
+    "false_positive_class": {
+      "boundary_shrink": 470,
+      "overlap_wrong_type": 319,
+      "no_overlap": 189,
+      "same_span_wrong_type": 161,
+      "boundary_expand": 158,
+      "boundary_partial": 5
+    },
+    "false_positive_total": 1302,
+    "scored": {
+      "precision": 0.6881437125748503,
+      "recall": 0.5890916547057617,
+      "micro_f1": 0.6347768448961555,
+      "tp": 2873,
+      "fp": 1302,
+      "fn": 2004
+    }
+  },
+  "dictionary_longest_false_positive": {
+    "file": "outputs/predictions/dictionary_longest.json",
+    "false_positive_class": {
+      "overlap_wrong_type": 1417,
+      "boundary_shrink": 1477,
+      "no_overlap": 1156,
+      "same_span_wrong_type": 150,
+      "boundary_partial": 11,
+      "boundary_expand": 47
+    },
+    "false_positive_total": 4258,
+    "scored": {
+      "precision": 0.343711467324291,
+      "recall": 0.45724830838630304,
+      "micro_f1": 0.39243290805103387,
+      "tp": 2230,
+      "fp": 4258,
+      "fn": 2647
+    }
+  },
+  "bert_kept_miss": {
+    "total": 1251,
+    "outcome": {
+      "same_type_boundary": 547,
+      "overlap_wrong_type": 321,
+      "miss": 233,
+      "same_span_wrong_type": 150
+    },
+    "by_type": {
+      "dis": {
+        "same_type_boundary": 70,
+        "miss": 28,
+        "same_span_wrong_type": 51,
+        "overlap_wrong_type": 32
+      },
+      "sym": {
+        "overlap_wrong_type": 91,
+        "miss": 51,
+        "same_type_boundary": 198,
+        "same_span_wrong_type": 41
+      },
+      "dru": {
+        "same_type_boundary": 30,
+        "overlap_wrong_type": 7,
+        "miss": 6,
+        "same_span_wrong_type": 3
+      },
+      "equ": {
+        "same_type_boundary": 4,
+        "overlap_wrong_type": 1,
+        "same_span_wrong_type": 3,
+        "miss": 6
+      },
+      "pro": {
+        "miss": 63,
+        "same_type_boundary": 99,
+        "overlap_wrong_type": 68,
+        "same_span_wrong_type": 9
+      },
+      "bod": {
+        "miss": 62,
+        "same_span_wrong_type": 25,
+        "overlap_wrong_type": 94,
+        "same_type_boundary": 99
+      },
+      "ite": {
+        "miss": 13,
+        "overlap_wrong_type": 22,
+        "same_type_boundary": 29,
+        "same_span_wrong_type": 12
+      },
+      "mic": {
+        "same_span_wrong_type": 6,
+        "same_type_boundary": 18,
+        "miss": 4,
+        "overlap_wrong_type": 6
+      },
+      "dep": {}
+    }
+  },
+  "per_type": {
+    "dictionary_longest": {
+      "dis": {
+        "precision": 0.5877926421404682,
+        "recall": 0.5873015873015873,
+        "micro_f1": 0.5875470121186794,
+        "tp": 703,
+        "fp": 493,
+        "fn": 494
+      },
+      "sym": {
+        "precision": 0.3359477124183007,
+        "recall": 0.25855130784708247,
+        "micro_f1": 0.2922114837976123,
+        "tp": 257,
+        "fp": 508,
+        "fn": 737
+      },
+      "dru": {
+        "precision": 0.5448275862068965,
+        "recall": 0.5249169435215947,
+        "micro_f1": 0.5346869712351945,
+        "tp": 158,
+        "fp": 132,
+        "fn": 143
+      },
+      "equ": {
+        "precision": 0.17073170731707318,
+        "recall": 0.32558139534883723,
+        "micro_f1": 0.224,
+        "tp": 14,
+        "fp": 68,
+        "fn": 29
+      },
+      "pro": {
+        "precision": 0.3986394557823129,
+        "recall": 0.4425981873111782,
+        "micro_f1": 0.4194702934860415,
+        "tp": 293,
+        "fp": 442,
+        "fn": 369
+      },
+      "bod": {
+        "precision": 0.24606741573033708,
+        "recall": 0.4962235649546828,
+        "micro_f1": 0.328993490235353,
+        "tp": 657,
+        "fp": 2013,
+        "fn": 667
+      },
+      "ite": {
+        "precision": 0.14760914760914762,
+        "recall": 0.30603448275862066,
+        "micro_f1": 0.19915848527349228,
+        "tp": 71,
+        "fp": 410,
+        "fn": 161
+      },
+      "mic": {
+        "precision": 0.3902439024390244,
+        "recall": 0.5765765765765766,
+        "micro_f1": 0.46545454545454545,
+        "tp": 64,
+        "fp": 100,
+        "fn": 47
+      },
+      "dep": {
+        "precision": 0.12380952380952381,
+        "recall": 1.0,
+        "micro_f1": 0.22033898305084745,
+        "tp": 13,
+        "fp": 92,
+        "fn": 0
+      }
+    },
+    "bert_bio": {
+      "dis": {
+        "precision": 0.8413098236775819,
+        "recall": 0.8370927318295739,
+        "micro_f1": 0.8391959798994975,
+        "tp": 1002,
+        "fp": 189,
+        "fn": 195
+      },
+      "sym": {
+        "precision": 0.6123876123876124,
+        "recall": 0.6167002012072434,
+        "micro_f1": 0.6145363408521304,
+        "tp": 613,
+        "fp": 388,
+        "fn": 381
+      },
+      "dru": {
+        "precision": 0.7760736196319018,
+        "recall": 0.840531561461794,
+        "micro_f1": 0.807017543859649,
+        "tp": 253,
+        "fp": 73,
+        "fn": 48
+      },
+      "equ": {
+        "precision": 0.5370370370370371,
+        "recall": 0.6744186046511628,
+        "micro_f1": 0.597938144329897,
+        "tp": 29,
+        "fp": 25,
+        "fn": 14
+      },
+      "pro": {
+        "precision": 0.6672185430463576,
+        "recall": 0.6087613293051359,
+        "micro_f1": 0.636650868878357,
+        "tp": 403,
+        "fp": 201,
+        "fn": 259
+      },
+      "bod": {
+        "precision": 0.6162310866574966,
+        "recall": 0.338368580060423,
+        "micro_f1": 0.4368600682593857,
+        "tp": 448,
+        "fp": 279,
+        "fn": 876
+      },
+      "ite": {
+        "precision": 0.25,
+        "recall": 0.16379310344827586,
+        "micro_f1": 0.19791666666666666,
+        "tp": 38,
+        "fp": 114,
+        "fn": 194
+      },
+      "mic": {
+        "precision": 0.7184466019417476,
+        "recall": 0.6666666666666666,
+        "micro_f1": 0.6915887850467289,
+        "tp": 74,
+        "fp": 29,
+        "fn": 37
+      },
+      "dep": {
+        "precision": 0.7647058823529411,
+        "recall": 1.0,
+        "micro_f1": 0.8666666666666666,
+        "tp": 13,
+        "fp": 4,
+        "fn": 0
+      }
+    },
+    "qwen_3b_one": {
+      "dis": {
+        "precision": 0.049473684210526316,
+        "recall": 0.03926482873851295,
+        "micro_f1": 0.04378202142524453,
+        "tp": 47,
+        "fp": 903,
+        "fn": 1150
+      },
+      "sym": {
+        "precision": 0.013769363166953529,
+        "recall": 0.008048289738430584,
+        "micro_f1": 0.010158730158730159,
+        "tp": 8,
+        "fp": 573,
+        "fn": 986
+      },
+      "dru": {
+        "precision": 0.0449438202247191,
+        "recall": 0.03986710963455149,
+        "micro_f1": 0.04225352112676056,
+        "tp": 12,
+        "fp": 255,
+        "fn": 289
+      },
+      "equ": {
+        "precision": 0.023809523809523808,
+        "recall": 0.023255813953488372,
+        "micro_f1": 0.023529411764705882,
+        "tp": 1,
+        "fp": 41,
+        "fn": 42
+      },
+      "pro": {
+        "precision": 0.01639344262295082,
+        "recall": 0.006042296072507553,
+        "micro_f1": 0.008830022075055186,
+        "tp": 4,
+        "fp": 240,
+        "fn": 658
+      },
+      "bod": {
+        "precision": 0.03592814371257485,
+        "recall": 0.00906344410876133,
+        "micro_f1": 0.014475271411338963,
+        "tp": 12,
+        "fp": 322,
+        "fn": 1312
+      },
+      "ite": {
+        "precision": 0.0045871559633027525,
+        "recall": 0.004310344827586207,
+        "micro_f1": 0.0044444444444444444,
+        "tp": 1,
+        "fp": 217,
+        "fn": 231
+      },
+      "mic": {
+        "precision": 0.007042253521126761,
+        "recall": 0.009009009009009009,
+        "micro_f1": 0.007905138339920948,
+        "tp": 1,
+        "fp": 141,
+        "fn": 110
+      },
+      "dep": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "micro_f1": 0.0,
+        "tp": 0,
+        "fp": 35,
+        "fn": 13
+      }
+    }
+  },
+  "nesting_recall": {
+    "dictionary_longest": {
+      "nested": {
+        "tp": 461,
+        "fn": 1021,
+        "gold": 1482,
+        "recall": 0.31106612685560053
+      },
+      "non_nested": {
+        "tp": 1769,
+        "fn": 1626,
+        "gold": 3395,
+        "recall": 0.521060382916053
+      }
+    },
+    "bert_bio": {
+      "nested": {
+        "tp": 465,
+        "fn": 1017,
+        "gold": 1482,
+        "recall": 0.31376518218623484
+      },
+      "non_nested": {
+        "tp": 2408,
+        "fn": 987,
+        "gold": 3395,
+        "recall": 0.709278350515464
+      }
+    },
+    "qwen_3b_one": {
+      "nested": {
+        "tp": 12,
+        "fn": 1470,
+        "gold": 1482,
+        "recall": 0.008097165991902834
+      },
+      "non_nested": {
+        "tp": 74,
+        "fn": 3321,
+        "gold": 3395,
+        "recall": 0.021796759941089837
+      }
+    },
+    "definition": "金标与同句另一条金标存在严格包含关系（边界相同不算）。只分解召回，假正例不按嵌套归类。"
+  },
+  "shot_bootstrap": {
+    "documents": 1500,
+    "draws": 1000,
+    "seed": 42,
+    "unit": "document",
+    "statistic": "micro_f1(shot1) - micro_f1(shot3)",
+    "point_estimate": 0.0009804634773246078,
+    "percentile_2_5": -0.004289078586831401,
+    "percentile_97_5": 0.006262226028287219,
+    "draws_with_shot1_higher": 663,
+    "note": "对文档有放回抽样后重算微平均，不是逐篇 F1 的平均。只描述这一组固定示例。"
+  },
+  "dictionary_latency": {
+    "device": "cpu",
+    "includes_model_load": false,
+    "lexicon_build_sec": 0.4186336000020674,
+    "match_sec": 0.07361949999904027,
+    "documents": 1000,
+    "mean_match_sec": 7.361949999904027e-05,
+    "batch_size": null,
+    "score_matches_longest": {
+      "precision": 0.343711467324291,
+      "recall": 0.45724830838630304,
+      "micro_f1": 0.39243290805103387,
+      "tp": 2230,
+      "fp": 4258,
+      "fn": 2647
+    }
+  },
+  "files": [
+    {
+      "path": "outputs/metrics/dictionary_baseline.csv",
+      "exists": true,
+      "bytes": 164,
+      "sha256": "0ae4b4d41523b79b26d48ba1301bc0c2f67a7446a72684ed74fe9c4c1d232b8e"
+    },
+    {
+      "path": "outputs/metrics/bert_bio.csv",
+      "exists": true,
+      "bytes": 161,
+      "sha256": "0f7b8f1c322ad3558e68b6916f27a4c4532389fa5f44b329d2c00d3ba372a103"
+    },
+    {
+      "path": "outputs/metrics/qwen_3b.csv",
+      "exists": true,
+      "bytes": 152,
+      "sha256": "161a1df76710e1a349661faeb622f9548209a23dd8ac6f3926780be0eaad31b6"
+    },
+    {
+      "path": "outputs/metrics/qwen_3b_one.csv",
+      "exists": true,
+      "bytes": 96,
+      "sha256": "8f0754658aac82efa7ec1dc3a35a26e722af916d3029462fa38300180d0fad80"
+    },
+    {
+      "path": "outputs/metrics/qwen_shot_count_tune.csv",
+      "exists": true,
+      "bytes": 204,
+      "sha256": "e2e1869badc6af70b273b7a1a4b90df8d072dc430c00bd0fbc5ae83a6012185d"
+    },
+    {
+      "path": "outputs/metrics/qwen_shot_count_selection.json",
+      "exists": true,
+      "bytes": 1072,
+      "sha256": "802a5d75d2bf47307098479201acf3892b0b2da17f6d5cffc0043619fb292f78"
+    },
+    {
+      "path": "outputs/predictions/qwen_3b_one.json",
+      "exists": true,
+      "bytes": 1771057,
+      "sha256": "113f792d592896e747d848b7f5254d83fe7b07a569111854627fcece405d2450"
+    },
+    {
+      "path": "outputs/predictions/bert_bio.json",
+      "exists": true,
+      "bytes": 1575529,
+      "sha256": "d245c2650f7d23541723958ecb24ce0f0a2f6b697a95383384fccd3a363a03d1"
+    },
+    {
+      "path": "outputs/predictions/dictionary_longest.json",
+      "exists": true,
+      "bytes": 1030514,
+      "sha256": "94c789b5b984643a7fa99df36ffe8a93ddbb9cb2a511d149cdc6a94a766b7829"
+    },
+    {
+      "path": "outputs/checkpoints/bert_bio/model.safetensors",
+      "exists": true,
+      "bytes": 406789956,
+      "sha256": "eaf737faacca36c6c004a6a0cb99eccdc6d0cbe556726e8bfdd1439e35977fc3"
+    }
+  ]
+}
