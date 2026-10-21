@@ -1,4 +1,4 @@
-model_path: D:/models/bert-base-chinese
+model_path: models/bert-base-chinese
 max_length: 256
 content_tokens: 254
 window_stride: 64

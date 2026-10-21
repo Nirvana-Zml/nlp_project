@@ -1,4 +1,4 @@
-model_path: D:/models/Qwen2.5-3B-Instruct
+model_path: models/Qwen2.5-3B-Instruct
 quantization: 4bit_nf4
 bnb_4bit_quant_type: nf4
 bnb_4bit_use_double_quant: true

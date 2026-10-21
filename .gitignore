@@ -36,6 +36,7 @@ Thumbs.db
 desktop.ini
 
 # 训练产物与模型权重
+models/
 outputs/
 output/
 checkpoints/

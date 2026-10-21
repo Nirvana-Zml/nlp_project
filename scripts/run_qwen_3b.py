@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT))
 
 from src.data.schema import ENTITY_TYPES
 from src.evaluation.metrics import score_documents, write_metrics_csv
+from src.local_resources import cuda_issue, qwen_directory, qwen_issues
 from src.models.qwen_prompt import fill_prompt, format_examples, parse_model_output, select_train_examples
 
 METHODS = ("qwen_3b_zero", "qwen_3b_three")
@@ -42,9 +43,9 @@ def main() -> None:
     config = yaml.safe_load((ROOT / "configs" / "qwen_3b.yaml").read_text(encoding="utf-8"))
     _assert_plan(config)
     _self_check_parser()
-    model_path = Path(config["model_path"])
-    if not (model_path / "config.json").is_file():
-        raise SystemExit(f"模型目录不可用：{model_path}。按计划停止，不改模型、不换精度。")
+    issues = qwen_issues()
+    if issues:
+        raise SystemExit("\n\n".join(issues) + "\n按计划停止，不改模型、不换精度。")
 
     train_docs = _read_json(ROOT / config["train_path"])
     test_docs = _read_json(ROOT / config["test_path"])
@@ -185,6 +186,9 @@ def _load_model(config: dict):
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
+    issues = cuda_issue()
+    if issues:
+        raise SystemExit("\n\n".join(issues))
     torch.manual_seed(config["seed"])
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(config["seed"])
@@ -194,7 +198,7 @@ def _load_model(config: dict):
         bnb_4bit_use_double_quant=config["bnb_4bit_use_double_quant"],
         bnb_4bit_compute_dtype=torch.float16,
     )
-    path = config["model_path"]
+    path = str(qwen_directory())
     try:
         tokenizer = AutoTokenizer.from_pretrained(path, local_files_only=True)
         model = AutoModelForCausalLM.from_pretrained(

@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from src.evaluation.metrics import score_documents, write_metrics_csv
+from src.local_resources import bert_directory, bert_issues, cuda_issue
 from src.models.bio import (
     LABELS,
     LABEL_TO_ID,
@@ -90,7 +91,7 @@ def assert_plan_config(config: dict) -> None:
         "fp16": True,
         "seed": 42,
         "early_stopping_patience": 2,
-        "model_path": "D:/models/bert-base-chinese",
+        "model_path": "models/bert-base-chinese",
     }
     for key, value in expected.items():
         if config[key] != value:
@@ -295,7 +296,7 @@ def train_once(
     patience = int(config["early_stopping_patience"])
     set_seed(seed)
     model = BertForTokenClassification.from_pretrained(
-        config["model_path"],
+        bert_directory(),
         num_labels=len(LABELS),
         id2label={index: label for index, label in enumerate(LABELS)},
         label2id=dict(LABEL_TO_ID),
@@ -335,7 +336,7 @@ def train_once(
 
     lines = [
         f"created_at={datetime.now(timezone.utc).isoformat()}",
-        "model_path=D:/models/bert-base-chinese",
+        f"model_path={config['model_path']}",
         f"seed={seed}",
         f"learning_rate={float(config['learning_rate'])}",
         "scheduler=linear_warmup_decay",
@@ -567,8 +568,9 @@ def main() -> None:
         pass
     config = yaml.safe_load((ROOT / "configs" / "bert_bio.yaml").read_text(encoding="utf-8"))
     assert_plan_config(config)
-    if not torch.cuda.is_available():
-        raise RuntimeError("计划中的 fp16 训练需要 CUDA")
+    issues = bert_issues() + cuda_issue()
+    if issues:
+        raise SystemExit("\n\n".join(issues))
     set_seed(int(config["seed"]))
     documents = {
         name: load_documents(ROOT / config[f"{name}_path"])
@@ -581,7 +583,7 @@ def main() -> None:
     test_indices = manifest["test"]["indices"]
     if [doc["source_index"] for doc in documents["test"]] != test_indices:
         raise ValueError("test.json 的 source_index 与 split_manifest.json 不一致")
-    tokenizer = AutoTokenizer.from_pretrained(config["model_path"], use_fast=True)
+    tokenizer = AutoTokenizer.from_pretrained(bert_directory(), use_fast=True)
     if not tokenizer.is_fast:
         raise RuntimeError("需要 fast tokenizer 提供 offset")
     splits = {"test_indices": test_indices}

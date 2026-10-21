@@ -411,9 +411,13 @@ def _assert_unchanged(snapshot: dict[Path, tuple[int, int] | None]) -> None:
 
 
 def _require_model(config: dict) -> None:
-    model_path = Path(config["model_path"])
-    if not (model_path / "config.json").is_file():
-        raise SystemExit(f"模型目录不可用：{model_path}。按计划停止，不改模型、不换精度、不缩小调参集。")
+    from src.local_resources import qwen_issues
+
+    if not isinstance(config.get("model_path"), str) or not config["model_path"].strip():
+        raise SystemExit("configs/qwen_3b.yaml 缺少 model_path。按计划停止。")
+    issues = qwen_issues()
+    if issues:
+        raise SystemExit("\n\n".join(issues) + "\n按计划停止，不改模型、不换精度、不缩小调参集。")
 
 
 def _refuse_live_lock(path: Path, step3) -> None:
