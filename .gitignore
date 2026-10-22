@@ -35,9 +35,10 @@ secrets.json
 Thumbs.db
 desktop.ini
 
-# 训练产物与模型权重
+# 训练产物与模型权重。预测文件纳入版本库，供重算指标。
 models/
-outputs/
+outputs/*
+!outputs/predictions/
 output/
 checkpoints/
 runs/

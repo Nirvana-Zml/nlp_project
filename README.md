@@ -66,7 +66,7 @@ python scripts/run_pipeline.py
 4. `scripts/run_qwen_shot_count.py`：调参集上比较 0、1、3 条示例，再评入选条数的主测试。
 5. 四条 `scripts/recompute_*.py`：用预测文件重算指标，并与已写出的 CSV 对照。
 
-成功时四条重算各打印 `RECOMPUTE_OK`，最后打印 `PIPELINE_OK`。检查点和大型预测不放入提交 zip。
+成功时四条重算各打印 `RECOMPUTE_OK`，最后打印 `PIPELINE_OK`。`outputs/predictions/` 纳入仓库和提交 zip。检查点不放入提交 zip。
 
 ## 缺少模型或 GPU
 
@@ -135,4 +135,4 @@ python scripts/run_pipeline.py --recompute
 
 这条命令不加载 BERT 或 Qwen，也不需要 GPU。它只运行四条重算脚本。预测或 CSV 缺失时会列出相对路径并退出。成功时打印四次 `RECOMPUTE_OK` 和一次 `PIPELINE_OK`。
 
-训练配置在 `configs/bert_bio.yaml`。Qwen 配置在 `configs/qwen_3b.yaml`。提示条数配置在 `configs/qwen_shot_count.yaml`。Qwen 是本地推理，不记录 API 单价。提交包不含权重、检查点、原始数据集、虚拟环境和 API Key。
+训练配置在 `configs/bert_bio.yaml`。Qwen 配置在 `configs/qwen_3b.yaml`。提示条数配置在 `configs/qwen_shot_count.yaml`。Qwen 是本地推理，不记录 API 单价。提交包含 `outputs/predictions/`，不含权重、检查点、原始数据集、虚拟环境和 API Key。已有预测和 CSV 时，`--recompute` 不需要 GPU。
