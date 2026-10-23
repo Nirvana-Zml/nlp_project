@@ -27,6 +27,7 @@ secrets.json
 # 编辑器与本地工具
 .idea/
 .vscode/
+.cursor/
 .opencode/
 .codeartsdoer/
 
