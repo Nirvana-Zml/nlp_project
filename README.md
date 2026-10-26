@@ -2,7 +2,20 @@
 
 CMeEE-V2 上的词典基线、BERT-BIO，以及 Qwen2.5-3B 的零样本、单样本和三样本。提示条数在调参集上比较后再评主测试。下标左闭右开：`text[start_idx:end_idx] == entity`。种子 42。无标签的 `CMeEE-V2_test.json` 不参与评分。
 
-作者环境是 Python 3.11.17。请使用 Python 3.11。在仓库根目录安装依赖：
+作者环境是 conda `medical_ner`、Python 3.11。请先建隔离环境，再装依赖。虚拟环境不要打进提交 zip。
+
+```text
+# conda（与作者环境一致）
+conda create -n medical_ner python=3.11 -y
+conda activate medical_ner
+
+# 或 venv
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# Linux/macOS: source .venv/bin/activate
+```
+
+在已激活的环境中、仓库根目录安装依赖：
 
 ```text
 pip install -r requirements.txt
